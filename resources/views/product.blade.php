@@ -251,11 +251,18 @@
             <section class="col-lg-8 pt-2 pt-lg-4 pb-4 mb-lg-3">
                 <div class="pt-2 px-4 pr-lg-0 pl-xl-5">
                     <!-- Product gallery-->
-                    <div class="cz-gallery"><a class="gallery-item rounded-lg mb-grid-gutter" href="/img/marketplace/single/01.jpg" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;Simple iPhone X Mockups&lt;/h6&gt;"><img src="/img/marketplace/single/01.jpg" alt="Gallery preview"/><span class="gallery-item-caption">Simple iPhone X Mockups</span></a>
-                        <div class="row">
-                            <div class="col-sm-6"><a class="gallery-item rounded-lg mb-grid-gutter" href="/img/marketplace/single/02.jpg" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;UI Psd iPhone X Monochrome&lt;/h6&gt;"><img src="/img/marketplace/single/02.jpg" alt="Gallery preview"/><span class="gallery-item-caption">UI Psd iPhone X Monochrome</span></a></div>
-                            <div class="col-sm-6"><a class="gallery-item rounded-lg mb-grid-gutter" href="/img/marketplace/single/03.jpg" data-sub-html="&lt;h6 class=&quot;font-size-sm text-light&quot;&gt;iPhone 11 Clay Mockup&lt;/h6&gt;"><img src="/img/marketplace/single/03.jpg" alt="Gallery preview"/><span class="gallery-item-caption">iPhone 11 Clay Mockup</span></a></div>
+                    <div class="product-section-images">
+                        <div class="product-section-thumbnail selected">
+                            <img src="{{ productImage($product->image) }}" alt="product">
                         </div>
+
+                        @if ($product->images)
+                            @foreach (json_decode($product->images, true) as $image)
+                                <div class="product-section-thumbnail">
+                                    <img src="{{ productImage($image) }}" alt="product">
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                     <!-- Wishlist + Sharing-->
                     <div class="d-flex flex-wrap justify-content-between align-items-center border-top pt-3">
@@ -273,37 +280,17 @@
                     <div class="accordion" id="licenses">
                         <div class="card border-top-0 border-left-0 border-right-0">
                             <div class="card-header d-flex justify-content-between align-items-center py-3 border-0">
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" name="license" id="license-std" checked>
-                                    <label class="custom-control-label font-weight-medium text-dark" for="license-std" data-toggle="collapse" data-target="#standard-license">Standard license</label>
-                                </div>
-                                <h5 class="mb-0 text-accent font-weight-normal">$18.<small>00</small></h5>
                             </div>
-                            <div class="collapse show" id="standard-license" data-parent="#licenses">
-                                <div class="card-body py-0 pb-2">
-                                    <ul class="list-unstyled font-size-sm">
-                                        <li class="d-flex align-items-center"><i class="czi-check-circle text-success mr-1"></i><span class="font-size-ms">Quality verified</span></li>
-                                        <li class="d-flex align-items-center"><i class="czi-check-circle text-success mr-1"></i><span class="font-size-ms">Use for a single project</span></li>
-                                        <li class="d-flex align-items-center"><i class="czi-check-circle text-success mr-1"></i><span class="font-size-ms">Non-paying users only</span></li>
-                                    </ul>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="card border-bottom-0 border-left-0 border-right-0">
                             <div class="card-header d-flex justify-content-between align-items-center py-3 border-0">
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" name="license" id="license-ext">
-                                    <label class="custom-control-label font-weight-medium text-dark" for="license-ext" data-toggle="collapse" data-target="#extended-license">Extended license</label>
                                 </div>
-                                <h5 class="mb-0 text-accent font-weight-normal">$299.<small>00</small></h5>
+
                             </div>
                             <div class="collapse" id="extended-license" data-parent="#licenses">
                                 <div class="card-body py-0 pb-2">
-                                    <ul class="list-unstyled font-size-sm">
-                                        <li class="d-flex align-items-center"><i class="czi-check-circle text-success mr-1"></i><span class="font-size-ms">Quality verified</span></li>
-                                        <li class="d-flex align-items-center"><i class="czi-check-circle text-success mr-1"></i><span class="font-size-ms">Use for a single project</span></li>
-                                        <li class="d-flex align-items-center"><i class="czi-check-circle text-success mr-1"></i><span class="font-size-ms">Paying users allowed</span></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -346,16 +333,10 @@
         <div class="tab-pane fade show active" id="details" role="tabpanel">
             <div class="row">
                 <div class="col-lg-8">
-                    <p class="font-size-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <h3 class="h5 pt-2">Main features</h3>
-                    <ul class="font-size-md">
-                        <li>Nemo enim ipsam voluptatem quia voluptas sit</li>
-                        <li>Ut enim ad minima veniam, quis nostrum exercitationem</li>
-                        <li>Duis aute irure dolor in reprehenderit in voluptate</li>
-                        <li>At vero eos et accusamus et iusto odio dignissimos</li>
-                        <li>Omnis voluptas assumenda est omnis dolor</li>
-                        <li>Quis autem vel eum iure reprehenderit qui in ea voluptate</li>
-                    </ul>
+                    <h3 class="h5 pt-2">Product Details</h3>
+                    <p>
+                        {!! $product->description !!}
+                    </p>
                 </div>
             </div>
         </div>
