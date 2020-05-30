@@ -113,7 +113,7 @@
                         <div class="dropdown-divider"></div><a class="dropdown-item d-flex align-items-center" href="account-signin.html"><i class="czi-sign-out opacity-60 mr-2"></i>Sign Out</a>
                     </div>
                 </div>
-                <div class="navbar-tool ml-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="marketplace-cart.html"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon czi-cart"></i></a></div>
+                <div class="navbar-tool ml-4"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="/cart"><span class="navbar-tool-label">3</span><i class="navbar-tool-icon czi-cart"></i></a></div>
             </div>
             <div class="collapse navbar-collapse mr-auto order-lg-2" id="navbarCollapse">
                 <!-- Search-->
@@ -296,7 +296,12 @@
                         </div>
                     </div>
                     <hr>
-                    <button class="btn btn-primary btn-shadow btn-block mt-4" type="button" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart font-size-lg mr-2"></i>Add to Cart</button>
+                    @if ($product->quantity > 0)
+                        <form action="{{ route('cart.store', $product) }}" method="POST">
+                            {{ csrf_field() }}
+                                <button class="btn btn-primary btn-shadow btn-block mt-4" type="submit" data-toggle="toast" data-target="#cart-toast"><i class="czi-cart font-size-lg mr-2"></i>Add to Cart</button>
+                        </form>
+                    @endif
                     <div class="bg-secondary rounded p-3 mt-4 mb-2"><a class="media align-items-center" href="#"><img class="rounded-circle" width="50" src="/img/testimonials/01.jpg" alt="Sara Palson"/>
                             <div class="media-body pl-2"><span class="font-size-ms text-muted">Created by</span>
                                 <h6 class="font-size-sm mb-0">Sara Palson</h6>
